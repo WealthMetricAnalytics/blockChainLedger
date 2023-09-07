@@ -111,19 +111,19 @@ def setup():
     return PyChain([Block("Genesis", 0)])
 
 
-st.markdown("# PyChain")
-st.markdown("## Store a Transaction Record in the PyChain")
+st.markdown("# WealthMetric Analytics Blockchain")
+st.markdown("## Store a Transcation into WMA Blockchain")
 
 pychain = setup()
 
 # Get a value for `sender` from the user.
-Record.sender = st.text_input("Add Sender", placeholder="Enter A Valid PyChain Wallet Address")
+Record.sender = st.text_input("Add Sender", placeholder="Enter a Valid Blockchain Wallet Address")
 
 # Get a value for `receiver` from the user.
-Record.receiver = st.text_input("Add Receiver", placeholder="Enter A Valid PyChain Wallet Address")
+Record.receiver = st.text_input("Add Receiver", placeholder="Enter a Valid Blockchain Wallet Address")
 
 # Get a value for `amount` from the user.
-Record.amount = st.text_input("Add Amount", placeholder="Enter The Amount That Was Transfered")
+Record.amount = st.text_input("Add Amount", placeholder="Enter the Total Amount Transfered")
 
 # Write new block to the blockchain
 if st.button("Add Block"):
@@ -140,14 +140,14 @@ if st.button("Add Block"):
     st.balloons()
 
 # Display the Blockchain Ledger
-st.markdown("## The PyChain Ledger")
+st.markdown("## The Blockchain Ledger")
 pychain_df = pd.DataFrame(pychain.chain).astype(str)
 st.write(pychain_df)
 
 # Changes level for `difficulty` data attribute of the `PyChain` data class (`pychain.difficulty`) with this new `difficulty` value
 pychain.difficulty = st.sidebar.slider("Block Difficulty", 1, 5, 2)
 
-st.sidebar.write("# Block Inspector")
+st.sidebar.write("# Blockchain Inspector")
 selected_block = st.sidebar.selectbox(
     "Which block would you like to see?", pychain.chain
 )
